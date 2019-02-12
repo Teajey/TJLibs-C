@@ -6,7 +6,6 @@
 static const size_t PTR_SIZE = sizeof(PTR_T);
 
 void TJList_create(TJList* list, void* ptrArr, size_t length) {
-	printf("Well... we got this far...\n");
 	if (ptrArr != NULL) {
 		list->elems = malloc(PTR_SIZE * length);
 		PTR_T* ptr_t_arr = (PTR_T*)ptrArr;
