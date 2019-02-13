@@ -51,9 +51,9 @@ uint32_t lerpColor(uint32_t rgbFrom, uint32_t rgbTo, double tween) {
         r2, g2, b2;
     hexToRGB(rgbFrom, &r, &g, &b);
     hexToRGB(rgbTo, &r2, &g2, &b2);
-    r = lerp(r, r2, tween);
-    g = lerp(g, g2, tween);
-    b = lerp(b, b2, tween);
+    r = constrain(lerp(r, r2, tween), r, r2);
+    g = constrain(lerp(g, g2, tween), g, g2);
+    b = constrain(lerp(b, b2, tween), b, b2);
     return rgbToHex(r, g, b);
 }
 
