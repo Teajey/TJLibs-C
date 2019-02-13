@@ -46,6 +46,7 @@ void hexToMC(uint32_t hex, uint8_t* m);
 double lerp(double start, double end, double tween);
 uint32_t lerpColor(uint32_t rgbFrom, uint32_t rgbTo, double tween);
 float randomFloat(float min, float max);
+uint16_t randomInt(uint16_t min, uint16_t max);
 float dist(float x1, float y1, float x2, float y2);
 float vecdist(vector v1, vector v2);
 float map(float n, float start1, float stop1, float start2, float stop2, bool withinBounds);

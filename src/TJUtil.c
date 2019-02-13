@@ -70,15 +70,22 @@ uint32_t randomColor(uint32_t min, uint32_t max) {
         aMax, rMax, gMax, bMax;
     hexToARGB(min, &aMin, &rMin, &gMin, &bMin);
     hexToARGB(max, &aMax, &rMax, &gMax, &bMax);
-    aMin = rand() / RAND_MAX * 255;
-    rMin = rand() / RAND_MAX * 255;
-    gMin = rand() / RAND_MAX * 255;
-    bMin = rand() / RAND_MAX * 255;
+    aMin = randomInt(aMin, aMax);
+    rMin = randomInt(rMin, rMax);
+    gMin = randomInt(gMin, gMax);
+    bMin = randomInt(bMin, bMax);
     return argbToHex(aMin, rMin, gMin, bMin);
 }
 
 float randomFloat(float min, float max) {
     float r = (float)rand() / RAND_MAX;
+    r *= max - min;
+    r += min;
+    return r;
+}
+
+uint16_t randomInt(uint16_t min, uint16_t max) {
+    uint16_t r = rand() / RAND_MAX;
     r *= max - min;
     r += min;
     return r;
