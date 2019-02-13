@@ -51,17 +51,30 @@ double lerp(double start, double end, double tween) {
 	return result;
 }
 
-uint32_t lerpColor(uint32_t rgbFrom, uint32_t rgbTo, double tween) {
+uint32_t lerpColor(uint32_t argbFrom, uint32_t argbTo, double tween) {
     uint8_t
         a, r, g, b,
         a2, r2, g2, b2;
-    hexToARGB(rgbFrom, &a, &r, &g, &b);
-    hexToARGB(rgbTo, &a2, &r2, &g2, &b2);
+    hexToARGB(argbFrom, &a, &r, &g, &b);
+    hexToARGB(argbTo, &a2, &r2, &g2, &b2);
     a = constrain(lerp(a, a2, tween), a, a2);
     r = constrain(lerp(r, r2, tween), r, r2);
     g = constrain(lerp(g, g2, tween), g, g2);
     b = constrain(lerp(b, b2, tween), b, b2);
     return argbToHex(a, r, g, b);
+}
+
+uint32_t randomColor(uint32_t min, uint32_t max) {
+    uint8_t 
+        aMin, rMin, gMin, bMin,
+        aMax, rMax, gMax, bMax;
+    hexToARGB(min, &aMin, &rMin, &gMin, &bMin);
+    hexToARGB(max, &aMax, &rMax, &gMax, &bMax);
+    aMin = rand() / RAND_MAX * 255;
+    rMin = rand() / RAND_MAX * 255;
+    gMin = rand() / RAND_MAX * 255;
+    bMin = rand() / RAND_MAX * 255;
+    return argbToHex(aMin, rMin, gMin, bMin);
 }
 
 float randomFloat(float min, float max) {
