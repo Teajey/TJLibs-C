@@ -5,6 +5,11 @@
 #include <math.h>
 
 double constrain(double n, double low, double high) {
+    if (low > high) { //Swap values
+        low = low + high;
+        high = low - high;
+        low = low - high;
+    }
     return fmax(fmin(n, high), low);
 }
 
@@ -42,19 +47,21 @@ void hexToMC(uint32_t hex, uint8_t* m) {
 }
 
 double lerp(double start, double end, double tween) {
-	return start + (end - start) * tween;
+    double result = start + (end - start) * tween;
+	return result;
 }
 
 uint32_t lerpColor(uint32_t rgbFrom, uint32_t rgbTo, double tween) {
     uint8_t
-        r, g, b,
-        r2, g2, b2;
-    hexToRGB(rgbFrom, &r, &g, &b);
-    hexToRGB(rgbTo, &r2, &g2, &b2);
+        a, r, g, b,
+        a2, r2, g2, b2;
+    hexToARGB(rgbFrom, &a, &r, &g, &b);
+    hexToARGB(rgbTo, &a2, &r2, &g2, &b2);
+    a = constrain(lerp(a, a2, tween), a, a2);
     r = constrain(lerp(r, r2, tween), r, r2);
     g = constrain(lerp(g, g2, tween), g, g2);
     b = constrain(lerp(b, b2, tween), b, b2);
-    return rgbToHex(r, g, b);
+    return argbToHex(a, r, g, b);
 }
 
 float randomFloat(float min, float max) {
