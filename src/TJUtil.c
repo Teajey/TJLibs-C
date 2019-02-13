@@ -85,8 +85,8 @@ float randomFloat(float min, float max) {
 }
 
 uint16_t randomInt(uint16_t min, uint16_t max) {
-    uint16_t r = rand() / RAND_MAX;
-    r *= max - min;
+    uint16_t r = rand();
+    r %= max - min;
     r += min;
     return r;
 }

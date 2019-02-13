@@ -1,5 +1,5 @@
-#ifndef _TJUTIL_H_
-#define _TJUTIL_H_
+#ifndef TJUTIL_H
+#define TJUTIL_H
 
 #include <stdint.h>
 #include <stdbool.h>
@@ -45,6 +45,7 @@ uint32_t mcToHex(int m);
 void hexToMC(uint32_t hex, uint8_t* m);
 double lerp(double start, double end, double tween);
 uint32_t lerpColor(uint32_t rgbFrom, uint32_t rgbTo, double tween);
+uint32_t randomColor(uint32_t min, uint32_t max);
 float randomFloat(float min, float max);
 uint16_t randomInt(uint16_t min, uint16_t max);
 float dist(float x1, float y1, float x2, float y2);
