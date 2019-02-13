@@ -16,17 +16,6 @@ typedef struct TJList {
 	size_t elementSize;
 } TJList;
 
-//--TJList
-/*void TJList_create(TJList* list, void* ptrArr, size_t length);
-void TJList_resize(TJList* list, size_t newLength);
-void TJList_destroy(TJList* list);
-void* TJList_get(TJList* list, size_t index);
-void** TJList_array(TJList* list);
-void TJList_add(TJList* list, void* elemAddr);
-void TJList_insert(TJList* list, void* elem, size_t index);
-void TJList_removeAt(TJList* list, size_t index);
-void TJList_remove(TJList* list, void* elemAddr);
-void TJList_printbin(TJList* list);*/
 void TJList_addArray(TJList* list, void* array, size_t arrLength);
 void TJList_add(TJList* list, void* element);
 void TJList_init(TJList* list, void* initArray, size_t elementSize, size_t length);
